@@ -13,6 +13,7 @@ export const prompt = defineDocs({
   docs: {
     schema: frontmatterSchema.extend({
       pro: z.boolean().default(false),
+      cover: z.string().optional(),
     }),
   },
 })

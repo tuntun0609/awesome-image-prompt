@@ -1,36 +1,44 @@
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc'
 import { createRelativeLink } from 'fumadocs-ui/mdx'
-import { DocsBody } from 'fumadocs-ui/page'
 import { notFound } from 'next/navigation'
-import { getLocale } from 'next-intl/server'
+import { getLocale, getTranslations } from 'next-intl/server'
 
 import { defaultMdxComponents, promptSource } from '@/lib/source'
 
 export default async function PromptList(props: { params: Promise<{ slug?: string[] }> }) {
   const locale = await getLocale()
   const params = await props.params
-  const prompt = promptSource.getPage(params.slug, locale)
+  const promptDocs = promptSource.getPage(params.slug, locale)
+  const t = await getTranslations()
 
-  if (!prompt) {
+  if (!promptDocs) {
     notFound()
   }
 
-  const MDXContent = prompt.data.body
+  const MDXContent = promptDocs.data.body
 
   return (
-    <div className="container mx-auto max-w-2xl px-4 py-16">
-      <DocsBody>
-        <div className="bg-background border-primary/80 dark:border-primary/60 mb-8 space-y-1 rounded-lg border px-4 py-6">
-          <h1 className="text-primary mb-2 text-center text-3xl font-bold">{prompt.data.title}</h1>
+    <div className="container mx-auto max-w-3xl px-6 py-12">
+      <article className="prose prose-lg dark:prose-invert mx-auto">
+        <header className="mb-8 text-center">
+          <h1 className="mb-4 text-4xl font-light tracking-tight">{promptDocs.data.title}</h1>
+        </header>
+
+        {promptDocs.data.toc && promptDocs.data.toc.length > 0 && (
+          <div className="mb-8">
+            <InlineTOC items={promptDocs.data.toc}>{t('blog.toc')}</InlineTOC>
+          </div>
+        )}
+
+        <div className="text-gray-700 dark:text-gray-300">
+          <MDXContent
+            components={{
+              ...defaultMdxComponents,
+              a: createRelativeLink(promptSource, promptDocs),
+            }}
+          />
         </div>
-        <InlineTOC items={prompt.data.toc}>toc</InlineTOC>
-        <MDXContent
-          components={{
-            ...defaultMdxComponents,
-            a: createRelativeLink(promptSource, prompt),
-          }}
-        />
-      </DocsBody>
+      </article>
     </div>
   )
 }

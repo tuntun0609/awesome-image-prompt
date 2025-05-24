@@ -1,16 +1,10 @@
 import type { ReactNode } from 'react'
 import { NextProvider } from 'fumadocs-core/framework/next'
-import { DocsLayout } from 'fumadocs-ui/layouts/docs'
 import { RootProvider } from 'fumadocs-ui/provider'
 import { useLocale, useTranslations } from 'next-intl'
 
-import { LocaleSwitch } from '@/components/blocks/locale-switch'
-import ThemeToggle from '@/components/theme/theme-toggle'
 import { fumadocsUiTranslations } from '@/i18n/fumadocs-ui-translation'
 import { routing } from '@/i18n/routing'
-import { promptSource } from '@/lib/source'
-
-import { baseOptions } from './layout.config'
 
 import './fumadocs.css'
 
@@ -37,23 +31,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           translations: fumadocsUiTranslations[locale],
         }}
       >
-        <DocsLayout
-          sidebar={{
-            prefetch: false,
-            footer: (
-              <div className="flex flex-col gap-1">
-                <div className="flex justify-between">
-                  <LocaleSwitch />
-                  <ThemeToggle />
-                </div>
-              </div>
-            ),
-          }}
-          tree={promptSource.pageTree[locale]}
-          {...baseOptions(locale)}
-        >
-          {children}
-        </DocsLayout>
+        {children}
       </RootProvider>
     </NextProvider>
   )

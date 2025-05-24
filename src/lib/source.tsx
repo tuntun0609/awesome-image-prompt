@@ -1,5 +1,4 @@
-import type { ImgHTMLAttributes } from 'react'
-import { createElement } from 'react'
+import { createElement, ImgHTMLAttributes } from 'react'
 import { loader } from 'fumadocs-core/source'
 import { ImageZoom } from 'fumadocs-ui/components/image-zoom'
 import fumaDefaultMdxComponents from 'fumadocs-ui/mdx'
@@ -11,6 +10,8 @@ import { Mermaid } from '@/components/blocks/mermaid'
 import { prompt, pages } from '@source'
 
 import { i18nDocsConfig, routing } from '../i18n/routing'
+
+import { cn } from './utils'
 
 const iconLoader = (icon: string | undefined) => {
   if (!icon) {
@@ -101,6 +102,8 @@ export const getPageSource = (slug: string, locale?: Locale) => {
 
 export const defaultMdxComponents = {
   ...fumaDefaultMdxComponents,
-  img: (props: ImgHTMLAttributes<HTMLImageElement>) => <ImageZoom {...(props as any)} />,
+  img: (props: ImgHTMLAttributes<HTMLImageElement>) => (
+    <ImageZoom {...(props as any)} className={cn(props.className, 'mt-0 mb-0')} />
+  ),
   Mermaid,
 }

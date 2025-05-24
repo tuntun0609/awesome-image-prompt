@@ -17,7 +17,6 @@ const gradients = [
 export default async function PromptList() {
   const locale = await getLocale()
   const prompts = promptSource.getPages(locale)
-  console.log(prompts)
 
   return (
     <div className="container py-8">
@@ -28,7 +27,17 @@ export default async function PromptList() {
           return (
             <Link href={`/prompt-list/${prompt.slugs.join('/')}`} key={prompt.slugs.join('/')}>
               <Card className="group cursor-pointer overflow-hidden rounded-md py-0 transition-all hover:shadow-lg">
-                <div className={`h-32 bg-gradient-to-br ${gradientClass}`} />
+                {prompt.data.cover ? (
+                  <div className="relative aspect-[4/2] overflow-hidden">
+                    <img
+                      src={prompt.data.cover}
+                      alt={prompt.data.title}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className={`aspect-[4/3] bg-gradient-to-br ${gradientClass}`} />
+                )}
                 <CardHeader className="flex flex-row items-center gap-4 space-y-0">
                   <div className="flex flex-col gap-1">
                     <h3 className="font-semibold">{prompt.data.title}</h3>
