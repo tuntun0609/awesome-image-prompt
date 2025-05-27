@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export const Logo = () => {
@@ -10,6 +11,7 @@ export const Logo = () => {
       className="flex items-center gap-2 text-2xl whitespace-nowrap text-purple-600 lg:mx-4"
       href="/"
     >
+      <Image src="/logo.svg" alt="logo" width={32} height={32} />
       Awesome Image Prompt
     </Link>
   )
