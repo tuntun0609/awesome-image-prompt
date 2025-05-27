@@ -235,5 +235,10 @@
       "content": "After purchase, you will get full access to the documentation, including all premium content and tutorials.",
       "buyButton": "Go to Purchase"
     }
+  },
+  "Playground": {
+    "underConstruction": "Under Construction",
+    "comingSoon": "We are working hard on this feature. It will be available soon!",
+    "backToHome": "Back to Home"
   }
 }

@@ -28,7 +28,7 @@ export default async function PromptList() {
             <Link href={`/prompt-list/${prompt.slugs.join('/')}`} key={prompt.slugs.join('/')}>
               <Card className="group cursor-pointer overflow-hidden rounded-md py-0 transition-all hover:shadow-lg">
                 {prompt.data.cover ? (
-                  <div className="relative aspect-[4/2] overflow-hidden">
+                  <div className="relative aspect-[3/2] overflow-hidden">
                     <img
                       src={prompt.data.cover}
                       alt={prompt.data.title}
@@ -36,7 +36,7 @@ export default async function PromptList() {
                     />
                   </div>
                 ) : (
-                  <div className={`aspect-[4/3] bg-gradient-to-br ${gradientClass}`} />
+                  <div className={`aspect-[3/2] bg-gradient-to-br ${gradientClass}`} />
                 )}
                 <CardHeader className="flex flex-row items-center gap-4 space-y-0">
                   <div className="flex flex-col gap-1">

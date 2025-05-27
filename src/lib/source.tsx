@@ -4,9 +4,11 @@ import { ImageZoom } from 'fumadocs-ui/components/image-zoom'
 import fumaDefaultMdxComponents from 'fumadocs-ui/mdx'
 import { isNil } from 'lodash-es'
 import { icons } from 'lucide-react'
+import Image from 'next/image'
 import { Locale } from 'next-intl'
 
 import { Mermaid } from '@/components/blocks/mermaid'
+import { ImageCase, ImagePreview } from '@/components/case-preview'
 import { prompt, pages } from '@source'
 
 import { i18nDocsConfig, routing } from '../i18n/routing'
@@ -106,4 +108,8 @@ export const defaultMdxComponents = {
     <ImageZoom {...(props as any)} className={cn(props.className, 'mt-0 mb-0')} />
   ),
   Mermaid,
+  Image,
+  ImagePreview,
+  ImageCase,
+  ImageZoom,
 }

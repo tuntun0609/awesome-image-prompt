@@ -28,13 +28,13 @@ export const HeroHeader = () => {
       name: t('promptList'),
       href: '/prompt-list',
     },
-    {
-      name: t('case'),
-      href: '/case',
-    },
+    // {
+    //   name: t('case'),
+    //   href: '/case',
+    // },
     {
       name: t('playgroundList'),
-      href: '/playground-list',
+      href: '/playground',
     },
   ]
 

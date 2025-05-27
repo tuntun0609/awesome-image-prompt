@@ -31,7 +31,7 @@ export default function HeroSection() {
   const t = useTranslations('Hero')
   return (
     <>
-      <section>
+      <section className="mb-24">
         <div className="relative pt-12 md:pt-24">
           <div className="mx-auto max-w-7xl px-6">
             <div className="text-center sm:mx-auto lg:mt-0 lg:mr-auto">
@@ -94,7 +94,7 @@ export default function HeroSection() {
                   className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5"
                 >
                   <Button asChild size="lg" className="rounded-xl px-5 text-base">
-                    <Link href="#link">
+                    <Link href="/prompt-list">
                       <span className="text-nowrap">{t('getStarted')}</span>
                     </Link>
                   </Button>
@@ -106,7 +106,7 @@ export default function HeroSection() {
                   variant="ghost"
                   className="h-10.5 rounded-xl px-5"
                 >
-                  <Link href="#link">
+                  <Link href="/prompt-list">
                     <span className="text-nowrap">{t('toPlayground')}</span>
                   </Link>
                 </Button>

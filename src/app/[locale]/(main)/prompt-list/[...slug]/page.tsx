@@ -18,7 +18,7 @@ export default async function PromptList(props: { params: Promise<{ slug?: strin
   const MDXContent = promptDocs.data.body
 
   return (
-    <div className="container mx-auto max-w-3xl px-6 py-12">
+    <div className="container mx-auto max-w-4xl px-6 py-12">
       <article className="prose prose-lg dark:prose-invert mx-auto">
         <header className="mb-8 text-center">
           <h1 className="mb-4 text-4xl font-light tracking-tight">{promptDocs.data.title}</h1>
