@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 import { routing } from '@/i18n/routing'
-import { blogSource, docsSource } from '@/lib/source'
+import { promptSource } from '@/lib/source'
 
 // Adapt this as necessary
 const host = process.env.BASE_URL || 'http://localhost:3000'
@@ -28,8 +28,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   })
 
-  const docsSiteMap = routing.locales.flatMap(locale => {
-    const localPages = docsSource.getPages(locale)
+  const promptSiteMap = routing.locales.flatMap(locale => {
+    const localPages = promptSource.getPages(locale)
     return localPages.map(page => ({
       url: `${host}${page.url}`,
       lastModified: new Date(),
@@ -38,15 +38,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   })
 
-  const blogSiteMap = routing.locales.flatMap(locale => {
-    const localPages = blogSource.getPages(locale)
-    return localPages.map(page => ({
-      url: `${host}${page.url}`,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as ChangeFrequency,
-      priority: 0.8,
-    }))
-  })
-
-  return [...pagesSiteMap, ...docsSiteMap, ...blogSiteMap]
+  return [...pagesSiteMap, ...promptSiteMap]
 }
