@@ -100,8 +100,5 @@
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "undici": "^7.10.0"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": "eslint --max-warnings=0"
   }
 }
