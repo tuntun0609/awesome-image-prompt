@@ -5,18 +5,29 @@ import { ImageZoom } from 'fumadocs-ui/components/image-zoom'
 import { Image as ImageIcon } from 'lucide-react'
 
 import { Card, CardContent } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
+
+import styles from './case-preview.module.css'
 
 interface ImageCaseProps {
   imageUrl: string
   modelName: string
   alt?: string
+  objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down'
+  aspectRatio?: string
 }
 
-const ImageCase: FC<ImageCaseProps> = ({ imageUrl, modelName, alt }) => {
+const ImageCase: FC<ImageCaseProps> = ({
+  imageUrl,
+  modelName,
+  alt,
+  objectFit = 'cover',
+  aspectRatio = '1/1',
+}) => {
   return (
     <Card className="cursor-pointer overflow-hidden rounded-md p-0 transition-all">
       <CardContent className="p-0">
-        <div className="aspect-[1/1] overflow-hidden">
+        <div style={{ aspectRatio }} className={styles.imageContainer}>
           {imageUrl ? (
             <ImageZoom
               decoding="async"
@@ -26,7 +37,10 @@ const ImageCase: FC<ImageCaseProps> = ({ imageUrl, modelName, alt }) => {
               src={imageUrl}
               alt={alt || modelName}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 900px"
-              className="m-0! h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+              className={cn(
+                'm-0! h-full w-full object-top transition-transform duration-300 group-hover:scale-105'
+              )}
+              style={{ objectFit }}
             />
           ) : (
             <div className="bg-muted/30 flex h-full w-full items-center justify-center">

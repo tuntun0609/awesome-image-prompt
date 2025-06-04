@@ -14,6 +14,7 @@ export const prompt = defineDocs({
     schema: frontmatterSchema.extend({
       pro: z.boolean().default(false),
       cover: z.string().optional(),
+      coverClassName: z.string().optional(),
     }),
   },
 })

@@ -4,6 +4,7 @@ import { getLocale } from 'next-intl/server'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { promptSource } from '@/lib/source'
+import { cn } from '@/lib/utils'
 
 const gradients = [
   'from-blue-500 to-cyan-500',
@@ -32,7 +33,7 @@ export default async function PromptList() {
                     <img
                       src={prompt.data.cover}
                       alt={prompt.data.title}
-                      className="h-full w-full object-cover"
+                      className={cn('h-full w-full object-cover', prompt.data.coverClassName)}
                     />
                   </div>
                 ) : (
