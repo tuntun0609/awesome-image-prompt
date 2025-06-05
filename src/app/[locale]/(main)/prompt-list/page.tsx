@@ -33,7 +33,10 @@ export default async function PromptList() {
                     <img
                       src={prompt.data.cover}
                       alt={prompt.data.title}
-                      className={cn('h-full w-full object-cover', prompt.data.coverClassName)}
+                      className={cn(
+                        'h-full w-full object-cover transition-transform duration-300 group-hover:scale-105',
+                        prompt.data.coverClassName
+                      )}
                     />
                   </div>
                 ) : (

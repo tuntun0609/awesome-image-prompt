@@ -27,7 +27,7 @@ const ImageCase: FC<ImageCaseProps> = ({
   return (
     <Card className="cursor-pointer overflow-hidden rounded-md p-0 transition-all">
       <CardContent className="p-0">
-        <div style={{ aspectRatio }} className={styles.imageContainer}>
+        <div style={{ aspectRatio }} className={cn(styles.imageContainer)}>
           {imageUrl ? (
             <ImageZoom
               decoding="async"
@@ -37,9 +37,7 @@ const ImageCase: FC<ImageCaseProps> = ({
               src={imageUrl}
               alt={alt || modelName}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 900px"
-              className={cn(
-                'm-0! h-full w-full object-top transition-transform duration-300 group-hover:scale-105'
-              )}
+              className={cn('m-0! h-full w-full object-top transition-transform duration-300')}
               style={{ objectFit }}
             />
           ) : (

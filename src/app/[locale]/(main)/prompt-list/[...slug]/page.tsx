@@ -21,7 +21,7 @@ export default async function PromptList(props: { params: Promise<{ slug?: strin
       <div className="mx-auto max-w-4xl space-y-8">
         {/* Header */}
         <div className="space-y-4 text-center">
-          <h1 className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-4xl font-bold text-transparent md:text-5xl dark:from-purple-400 dark:to-pink-400">
+          <h1 className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-4xl leading-tight font-bold text-transparent md:text-5xl dark:from-purple-400 dark:to-pink-400">
             {promptDocs.data.title}
           </h1>
         </div>
